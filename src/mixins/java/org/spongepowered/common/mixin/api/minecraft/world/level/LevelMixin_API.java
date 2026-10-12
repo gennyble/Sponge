@@ -124,7 +124,7 @@ public abstract class LevelMixin_API<W extends World<W, L>, L extends Location<W
             net.minecraft.world.phys.AABB param1,
             @Nullable Predicate<? super T> param2);
     @Shadow public abstract RegistryAccess shadow$registryAccess();
-
+    @Shadow public abstract long shadow$getOverworldClockTime();
     // @formatter:on
 
 
@@ -201,6 +201,11 @@ public abstract class LevelMixin_API<W extends World<W, L>, L extends Location<W
         }
 
         return this.api$registryHolder;
+    }
+
+    @Override
+    public long overworldClockTime() {
+        return this.shadow$getOverworldClockTime();
     }
 
     // BlockVolume
